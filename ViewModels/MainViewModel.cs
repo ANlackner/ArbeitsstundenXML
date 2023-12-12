@@ -10,13 +10,19 @@ namespace ArbeitsstundenXML.ViewModels
     public partial class MainViewModel : ObservableObject
     {
         [ObservableProperty]
-        string _username = string.Empty;
+        public string _username = string.Empty;
 
         [ObservableProperty]
-        string _password = string.Empty;
+        public string _password = string.Empty;
 
         [ObservableProperty]
         int _stundenanzahl = 0;
+
+
+      
+      
+
+
 
 
     }

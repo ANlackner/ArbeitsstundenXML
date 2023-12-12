@@ -5,10 +5,22 @@
              x:Class="ArbeitsstundenXML.MainPage">
 
 
-    <Grid>
+    <Grid RowDefinitions="auto, auto, auto, auto, auto" 
+          ColumnDefinitions="auto, auto, auto, auto, auto">
         <Label Text="{Binding Test}" />
-    </Grid>
 
+
+
+        
+    </Grid>
+    <StackLayout>
+        <Entry Grid.Column="0" Grid.Row="0" Text="{Binding Username}" />
+        <Entry Grid.Row="1" Grid.Column="1" Text="{Binding Password}" />
+
+        <Button Grid.Row="2" Grid.Column="2" Text="Commit" Clicked="change" />
+        <TextBlock Grid.Row="3" Grid.Column="3"  Text=""  />
+        <TextBlock Grid.Row="4" Grid.Column="4"  Text=""/>
+    </StackLayout>
    
 
 </ContentPage>
