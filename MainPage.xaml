@@ -5,15 +5,14 @@
              x:Class="ArbeitsstundenXML.MainPage">
 
 
-    
-    <StackLayout>
-        <Entry Grid.Column="0" Grid.Row="0" Text="{Binding Username}" />
-        <Entry Grid.Row="1" Grid.Column="1" Text="{Binding Password}" />
 
-        <Button Grid.Row="2" Grid.Column="2" Text="Commit" Command="{Binding Change}" />
-        <Label Grid.Row="3" Grid.Column="3"  Text="{Binding Username}"  />
-        <Label Grid.Row="4" Grid.Column="4"  Text="{Binding Password}"/>
+    <StackLayout>
+        <Entry x:Name="inputEntry" Placeholder="Gib deinen Usernamen ein" />
+        <Entry x:Name="inputPassword" Placeholder="Gib dein Passwort ein" />
+        <Button Text="anmelden" Clicked="OnSaveButtonClicked" />
+        <Button Text="registrieren" Clicked="OnSaveButtonClicked" />
+        <Label x:Name="outputLabel" />
     </StackLayout>
-   
+
 
 </ContentPage>
