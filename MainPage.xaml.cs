@@ -9,16 +9,12 @@ namespace ArbeitsstundenXML
         {
             InitializeComponent();
             this.BindingContext = viewModel;
-            usernamesuccess = this.FindByName<usernamesuccess>("displayText");
+            
         }
 
         
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            usernamesuccess = Username;
-            passwordsuccess = Password;
-        }
+        
     }
 
 }
