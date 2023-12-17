@@ -18,8 +18,14 @@ namespace ArbeitsstundenXML
                 string userInput = inputEntry.Text;
                 string userPassword = inputPassword.Text;
                 outputLabel.Text = "User: " + userInput;
-                inputEntry.IsReadOnly = true; //deaktiviert das mögliche Zweite eingeben
+                inputEntry.IsReadOnly = true; //deaktiviert die mögliche Zweite eingeben
+                inputPassword.IsReadOnly = true;
                 inputSaved = true;
+                inputSaved = true;
+                // lässt den Button und die Eingabe nach dem Anmelden/registrieren erscheinen
+                hours.IsVisible = true;
+                commit.IsVisible = true;
+
             }
         }
 
