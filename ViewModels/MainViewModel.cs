@@ -3,6 +3,8 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -48,6 +50,24 @@ namespace ArbeitsstundenXML.ViewModels
             {
                 this.Fehler = ex.Message;
             }
+
+            [RelayCommand]
+            void Anmelden(string userEntry, string userPassword)
+            {
+                foreach (var userElement in document.Root.Elements("user"))
+                {
+                    var username = userElement.Element("username")?.Value;
+                    var password = userElement.Element("password")?.Value;
+
+                    // Vergleichen Sie Benutzername und Passwort
+                    if (username == userEntry && password == userPassword)
+                    {
+                        // Benutzer gefunden, fügen Sie hier Ihre Logik hinzu
+                        Console.WriteLine("Anmeldung erfolgreich!");
+                        return; // Optional: Verlassen Sie die Methode, da der Benutzer gefunden wurde
+                    }
+
+                }
             
 
             
