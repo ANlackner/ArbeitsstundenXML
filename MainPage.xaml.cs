@@ -22,7 +22,7 @@ namespace ArbeitsstundenXML
                 inputPassword.IsReadOnly = true;
                 inputSaved = true;
                 inputSaved = true;
-                // lässt den Button und die Eingabe nach dem Anmelden/registrieren erscheinen
+                // lässt den Button und die Eingabe nach dem Anmelden/Registrieren erscheinen
                 hours.IsVisible = true;
                 commit.IsVisible = true;
 

@@ -8,6 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 
 namespace ArbeitsstundenXML.ViewModels
@@ -15,41 +16,40 @@ namespace ArbeitsstundenXML.ViewModels
     public partial class MainViewModel : ObservableObject
     {
         [ObservableProperty]
-        int _hours = 0;
+        public int Hours = 0;
+
+        [ObservableProperty]
+        public string userEntry = string.Empty;
+
+        [ObservableProperty]
+        public string password = string.Empty;
 
         [ObservableProperty]
         string _fehler = string.Empty;
 
 
+
+
+
+
         [RelayCommand]
-       void Fertig()
+        void Fertig(string userInput, int Hours)
         {
-            try
+            bool user = userInput == user;
+
+            if (user == true)
             {
-                var rootElement = new XElement("root");
-                var nodeData = new XElement("data");
-                var valueAttribute = new XAttribute("user", "abcdefg");
-                nodeData.Add(valueAttribute);
-                nodeData.Add(new XAttribute("id", Guid.NewGuid().ToString()));
-                rootElement.Add(nodeData);
-                rootElement.Save("Data.xml");
-
-
-
-                var secondnodePwd = new XElement("data");
-                secondnodePwd.Add(new XAttribute("user", Hours));
-                secondnodePwd.Add(new XAttribute("id", Guid.NewGuid().ToString()));
-                rootElement.Add(secondnodePwd);
-
-
-                rootElement.Save("data.xml");
-
-
+                
+                SaveUserData();
+                return 
             }
-            catch(Exception ex)
+            else
             {
-                this.Fehler = ex.Message;
+                // Hier können Sie die Logik für den Fall implementieren, dass der Benutzer nicht gefunden wird
+                Console.WriteLine($"Benutzer {userEntry} nicht gefunden.");
             }
+        }
+           
 
             [RelayCommand]
             void Anmelden(string userEntry, string userPassword)
@@ -59,20 +59,21 @@ namespace ArbeitsstundenXML.ViewModels
                     var username = userElement.Element("username")?.Value;
                     var password = userElement.Element("password")?.Value;
 
-                    // Vergleichen Sie Benutzername und Passwort
+                    //Vergleich...
                     if (username == userEntry && password == userPassword)
                     {
-                        // Benutzer gefunden, fügen Sie hier Ihre Logik hinzu
+                        //erfolgreiches Ende
                         Console.WriteLine("Anmeldung erfolgreich!");
-                        return; // Optional: Verlassen Sie die Methode, da der Benutzer gefunden wurde
+                        return; 
                     }
 
                 }
-            
-
-            
-        }
 
 
+
+            }
+
+
+        
     }
 }
