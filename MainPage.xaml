@@ -7,11 +7,11 @@
 
 
     <StackLayout>
-        <Entry x:Name="inputEntry" Placeholder="Gib deinen Usernamen ein" />
-        <Entry x:Name="inputPassword" Placeholder="Gib dein Passwort ein" />
+        <Entry x:Name="inputEntry" Placeholder="Gib deinen Usernamen ein" Text="{Binding inputEntry}" />
+        <Entry x:Name="inputPassword" Placeholder="Gib dein Passwort ein" Text="{Binding inputPassword}" />
         <Button Text="anmelden" Clicked="OnSaveButtonClicked" Command="{Binding AnmeldenCommand}"/>
         <Button Text="registrieren" Clicked="OnSaveButtonClicked" Command="{Binding RegistrierenCommand}" />
-        <Label x:Name="outputLabel" />
+        <Label Text="{Binding OutputText}" />
 
         <Entry Text="{Binding Hours}" x:Name="hours" Placeholder="Geben Sie ihre Stunden ein:" IsVisible="False" />
         <Button x:Name="commit" Text="FERTIG" IsVisible="false" Command="{Binding FertigCommand}"> </Button>
