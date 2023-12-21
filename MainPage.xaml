@@ -7,7 +7,7 @@
 
 
     <StackLayout>
-        <Entry x:Name="inputEntry" Placeholder="Gib deinen Usernamen ein" Text="{Binding inputEntry}" />
+        <Entry x:Name="inputEntry" Placeholder="Gib deinen Usernamen ein" Text="{Binding InputEntry}" />
         <Entry x:Name="inputPassword" Placeholder="Gib dein Passwort ein" Text="{Binding inputPassword}" />
         <Button Text="anmelden" Clicked="OnSaveButtonClicked" Command="{Binding AnmeldenCommand}"/>
         <Button Text="registrieren" Clicked="OnSaveButtonClicked" Command="{Binding RegistrierenCommand}" />

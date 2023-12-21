@@ -8,15 +8,15 @@ namespace ArbeitsstundenXML
         public MainPage(MainViewModel viewModel)
         {
             InitializeComponent();
-            this.BindingContext = viewModel;
-            
+            BindingContext = new MainViewModel();
+
         }
         private void OnSaveButtonClicked(object sender, EventArgs e)
         {
             if (!inputSaved)
             {
-                string userInput = inputEntry.Text;
-                string userPassword = inputPassword.Text;
+                string UserInput = inputEntry.Text;
+                string UserPassword = inputPassword.Text;
                 
                 inputEntry.IsReadOnly = true; //deaktiviert die mögliche Zweite eingeben
                 inputPassword.IsReadOnly = true;

@@ -20,20 +20,20 @@ namespace ArbeitsstundenXML.ViewModels
         public int _Hours = 0;
 
         [ObservableProperty]
-        public string inputEntry = string.Empty;
+        public string _InputEntry = string.Empty;
 
 
         [ObservableProperty]
-        public string inputPassword = string.Empty;
+        public string _InputPassword = string.Empty;
 
         [ObservableProperty]
-        public string userEntry = string.Empty;
+        public string _UserEntry = string.Empty;
 
         [ObservableProperty]
-        public string password = string.Empty;
+        public string _Password = string.Empty;
 
         [ObservableProperty]
-        string _fehler = string.Empty;
+        string _Fehler = string.Empty;
 
         [ObservableProperty]
         string _OutputText = string.Empty;
@@ -45,25 +45,9 @@ namespace ArbeitsstundenXML.ViewModels
 
 
 
-        /*
-        [RelayCommand]
-        void Fertig(string userInput, int Hours)
-        {
-            bool user = userInput == user;
-
-            if (user == true)
-            {
-                
-                SaveUserData();
-                return 
-            }
-            else
-            {
-                // Hier können Sie die Logik für den Fall implementieren, dass der Benutzer nicht gefunden wird
-                Console.WriteLine($"Benutzer {userEntry} nicht gefunden.");
-            }
-        }
-        */
+        
+        
+        
 
 
         [RelayCommand]
@@ -80,7 +64,7 @@ namespace ArbeitsstundenXML.ViewModels
                     var password = userElement.SelectSingleNode("password")?.InnerText;
 
                     //Vergleich...
-                    if (username == InputEntry && password == inputPassword)
+                    if (username == InputEntry && password == InputPassword)
                     {
                         //erfolgreiches Ende
                         string OutputText = $"Angemeldet: {username}";
@@ -110,12 +94,12 @@ namespace ArbeitsstundenXML.ViewModels
                     data.Load(xmlFilePath);
 
                     // Überprüfen, ob der Benutzer bereits existiert
-                    bool userExists = data.DocumentElement.SelectNodes($"user[username='{userEntry}']").Count > 0;
+                    bool userExists = data.DocumentElement.SelectNodes($"user[username='{UserEntry}']").Count > 0;
 
                     if (userExists)
                     {
                         // Hier können Sie die Logik für den Fall implementieren, dass der Benutzer bereits existiert
-                        _OutputText = $"Benutzer '{userEntry}' existiert bereits.";
+                        OutputText = $"Benutzer '{UserEntry}' existiert bereits.";
                     }
                     else
                     {
@@ -123,11 +107,11 @@ namespace ArbeitsstundenXML.ViewModels
                         var newUser = data.CreateElement("user");
 
                         var usernameElement = data.CreateElement("username");
-                        usernameElement.InnerText = userEntry;
+                        usernameElement.InnerText = UserEntry;
                         newUser.AppendChild(usernameElement);
 
                         var passwordElement = data.CreateElement("password");
-                        passwordElement.InnerText = password;
+                        passwordElement.InnerText = Password;
                         newUser.AppendChild(passwordElement);
 
                         var hoursElement = data.CreateElement("hours");
@@ -141,12 +125,29 @@ namespace ArbeitsstundenXML.ViewModels
                         data.Save(xmlFilePath);
 
                         // Erfolgreiche Registrierung
-                        OutputText = $"Benutzer '{userEntry}' erfolgreich registriert.";
+                        OutputText = $"Benutzer '{UserEntry}' erfolgreich registriert.";
                     }
                 }
                 catch (Exception ex)
                 {
                     this.Fehler = ex.Message;
+                }
+
+            }
+            [RelayCommand]
+            void Fertig(string userInput, int Hours)
+            {
+                bool user = userInput == UserEntry;
+
+                if (user == true)
+                {
+
+                    SaveUserData();
+                    return;
+                }
+                else
+                {
+                    OutputText = "Es ist ein Fehler aufgetreten.";
                 }
             }
 
