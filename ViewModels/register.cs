@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace ArbeitsstundenXML.ViewModels
 {
-    public partial class register : MainViewModel
+    public partial class Register : MainViewModel
     {
-        public register() { }
+        public Register() { }
 
 
         
@@ -18,48 +19,38 @@ namespace ArbeitsstundenXML.ViewModels
         {
             try
             {
-                XmlDocument data = new XmlDocument();
-                string xmlFilePath = "C:\\Users\\arian\\git\\apr3\\Dienststunden\\ArbeitsstundenXML\\Resources\\files\\data.xml";
-                data.Load(xmlFilePath);
+                // Laden der XML-Datei
+                XDocument doc = XDocument.Load("C:\\Users\\arian\\git\\apr3\\Dienststunden\\ArbeitsstundenXML\\Resources\\files\\data.xml");
 
                 // Überprüfen, ob der Benutzer bereits existiert
-                bool userExists = data.DocumentElement.SelectNodes($"user[username='{UserEntry}']").Count > 0;
+                bool userExists = doc.Root.Elements("user")
+                    .Any(u => u.Element("username")?.Value == InputEntry);
 
                 if (userExists)
                 {
-                    // Hier können Sie die Logik für den Fall implementieren, dass der Benutzer bereits existiert
-                    OutputText = $"Benutzer '{UserEntry}' existiert bereits.";
+                    OutputText = $"Benutzer '{InputEntry}' existiert bereits.";
                 }
                 else
                 {
-                    // Neues user-Element erstellen
-                    var newUser = data.CreateElement("user");
+                    // Neues Benutzer-Element erstellen
+                    XElement newUser = new XElement("user",
+                        new XElement("username", InputEntry),
+                        new XElement("password", InputPassword),
+                        new XElement("hours", Hours.ToString())
+                    );
 
-                    var usernameElement = data.CreateElement("username");
-                    usernameElement.InnerText = UserEntry;
-                    newUser.AppendChild(usernameElement);
-
-                    var passwordElement = data.CreateElement("password");
-                    passwordElement.InnerText = Password;
-                    newUser.AppendChild(passwordElement);
-
-                    var hoursElement = data.CreateElement("hours");
-                    hoursElement.InnerText = _Hours.ToString();
-                    newUser.AppendChild(hoursElement);
-
-                    // Hinzufügen des neuen user-Elements zum root-Element der XML-Datei
-                    data.DocumentElement.AppendChild(newUser);
+                    // Hinzufügen des neuen Benutzer-Elements zum Root-Element der XML-Datei
+                    doc.Root.Add(newUser);
 
                     // Speichern der Änderungen
-                    data.Save(xmlFilePath);
+                    doc.Save("C:\\Pfad\\Zu\\Deiner\\Datei\\data.xml");
 
-                    // Erfolgreiche Registrierung
-                    OutputText = $"Benutzer '{UserEntry}' erfolgreich registriert.";
+                    OutputText = $"Benutzer '{InputEntry}' erfolgreich registriert.";
                 }
             }
             catch (Exception ex)
             {
-                this.Fehler = ex.Message;
+                Fehler = ex.Message;
             }
 
         }

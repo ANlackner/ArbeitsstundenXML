@@ -8,10 +8,10 @@ using System.Xml;
 
 namespace ArbeitsstundenXML.ViewModels
 {
-    public partial class anmeldung : MainViewModel
+    public partial class Anmeldung : MainViewModel
     {
 
-        public anmeldung() { }
+        public Anmeldung() { }
 
 
         [RelayCommand]

@@ -44,7 +44,7 @@ namespace ArbeitsstundenXML.ViewModels
 
 
 
-        private register _register = new register();
+        private Register _register = new Register();
 
         [RelayCommand]
         void Reg()
@@ -54,7 +54,7 @@ namespace ArbeitsstundenXML.ViewModels
         
 
 
-        private anmeldung _anmeldung = new anmeldung();
+        private Anmeldung _anmeldung = new Anmeldung();
         [RelayCommand]
         void Anm()
         {
@@ -63,7 +63,7 @@ namespace ArbeitsstundenXML.ViewModels
 
         
 
-        private hinzufuegen _hinzufuegen = new hinzufuegen();
+        private Hinzufuegen _hinzufuegen = new();
         [RelayCommand]
         void Hinzufuegen()
         {

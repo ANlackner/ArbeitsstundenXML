@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ArbeitsstundenXML.ViewModels
 {
-    public partial class hinzufuegen : MainViewModel
+    public partial class Hinzufuegen : MainViewModel
     {
 
-        public hinzufuegen() { }
+        public Hinzufuegen() { }
 
 
         [RelayCommand]
