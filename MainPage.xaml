@@ -11,13 +11,13 @@
     <StackLayout>
         <Entry x:Name="inputEntry" Placeholder="Gib deinen Usernamen ein" Text="{Binding InputEntry}" />
         <Entry x:Name="inputPassword" Placeholder="Gib dein Passwort ein" Text="{Binding InputPassword}" />
-        <Button Text="anmelden" Clicked="OnSaveButtonClicked" Command="{Binding AnmeldenCommand}"/>
+        <Button Text="anmelden" Clicked="OnSaveButtonClicked" Command="{Binding AnmCommand}"/>
         
         <Button Text="registrieren" Clicked="OnSaveButtonClicked" Command="{Binding RegCommand}" />
         <Label Text="{Binding OutputText}" />
 
         <Entry Text="{Binding Hours}" x:Name="hours" Placeholder="Geben Sie ihre Stunden ein:" IsVisible="False" />
-        <Button x:Name="commit" Text="FERTIG" IsVisible="false" Command="{Binding FertigCommand}"> </Button>
+        <Button x:Name="commit" Text="FERTIG" IsVisible="false" Command="{Binding HinzufuegenCommand}"> </Button>
 
 
         <Label Text="{Binding Fehler}" />
