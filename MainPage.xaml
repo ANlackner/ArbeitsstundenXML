@@ -2,15 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Shell.NavBarIsVisible="false"
-             x:Class="ArbeitsstundenXML.MainPage">
+             x:Class="ArbeitsstundenXML.MainPage"
+             xmlns:viewmodel="clr-namespace:ArbeitsstundenXML.ViewModels"
+             x:DataType="viewmodel:MainViewModel">
 
 
 
     <StackLayout>
         <Entry x:Name="inputEntry" Placeholder="Gib deinen Usernamen ein" Text="{Binding InputEntry}" />
-        <Entry x:Name="inputPassword" Placeholder="Gib dein Passwort ein" Text="{Binding inputPassword}" />
+        <Entry x:Name="inputPassword" Placeholder="Gib dein Passwort ein" Text="{Binding InputPassword}" />
         <Button Text="anmelden" Clicked="OnSaveButtonClicked" Command="{Binding AnmeldenCommand}"/>
-        <Button Text="registrieren" Clicked="OnSaveButtonClicked" Command="{Binding RegistrierenCommand}" />
+        
+        <Button Text="registrieren" Clicked="OnSaveButtonClicked" Command="{Binding RegCommand}" />
         <Label Text="{Binding OutputText}" />
 
         <Entry Text="{Binding Hours}" x:Name="hours" Placeholder="Geben Sie ihre Stunden ein:" IsVisible="False" />

@@ -1,4 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	
+  <user>
+    <username>
+    </username>
+    <password>
+    </password>
+    <hours>55</hours>
+  </user>
 </root>
