@@ -19,10 +19,10 @@ namespace ArbeitsstundenXML.ViewModels
         {
             try
             {
-                // Laden der XML-Datei
+               
                 XDocument doc = XDocument.Load("C:\\Users\\arian\\git\\apr3\\Dienststunden\\ArbeitsstundenXML\\Resources\\files\\data.xml");
 
-                // Überprüfen, ob der Benutzer bereits existiert
+                // Überprüfung ob es den Benutzer bereits gibt
                 bool userExists = doc.Root.Elements("user")
                     .Any(u => u.Element("username")?.Value == InputEntry);
 
@@ -39,7 +39,7 @@ namespace ArbeitsstundenXML.ViewModels
                         new XElement("hours", Hours.ToString())
                     );
 
-                    // Hinzufügen des neuen Benutzer-Elements zum Root-Element der XML-Datei
+                    // Hinzufügung
                     doc.Root.Add(newUser);
 
                     // Speichern der Änderungen

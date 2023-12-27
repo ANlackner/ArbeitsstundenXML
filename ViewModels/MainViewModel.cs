@@ -38,6 +38,9 @@ namespace ArbeitsstundenXML.ViewModels
 
         [ObservableProperty]
         string _OutputText = string.Empty;
+
+        [ObservableProperty]
+        int _AllHours = 0;
         
 
         private bool inputSaved = false;
@@ -69,12 +72,32 @@ namespace ArbeitsstundenXML.ViewModels
         {
             _hinzufuegen.Fertig();
         }
+
+
+
+        [RelayCommand]
+        void BerechneUndZeigeGesamteStunden()
+        {
             
 
+            // Instanz der Summe-Klasse erstellen
+            Summe summe = new Summe();
+
+            // Gesamte Stunden berechnen
+            int gesamteStunden = summe.BerechneGesamteStunden(UserEntry);
+
+            // Ausgabe der gesamten Stunden
+            AllHours = gesamteStunden;
+        }
 
 
 
-        
-        
+
+
+
+
+
+
+
     }
 }

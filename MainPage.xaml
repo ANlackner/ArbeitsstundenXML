@@ -18,6 +18,7 @@
 
         <Entry Text="{Binding Hours}" x:Name="hours" Placeholder="Geben Sie ihre Stunden ein:" IsVisible="False" />
         <Button x:Name="commit" Text="FERTIG" IsVisible="false" Command="{Binding HinzufuegenCommand}"> </Button>
+        <Label Text="{Binding AllHours}" />
 
 
         <Label Text="{Binding Fehler}" />
