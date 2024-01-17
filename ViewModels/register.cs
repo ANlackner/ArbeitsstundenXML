@@ -43,7 +43,7 @@ namespace ArbeitsstundenXML.ViewModels
                     doc.Root.Add(newUser);
 
                     // Speichern der Änderungen
-                    doc.Save("C:\\Pfad\\Zu\\Deiner\\Datei\\data.xml");
+                    doc.Save("C:\\Users\\arian\\git\\apr3\\Dienststunden\\ArbeitsstundenXML\\Resources\\files\\data.xml");
 
                     OutputText = $"Benutzer '{InputEntry}' erfolgreich registriert.";
                 }

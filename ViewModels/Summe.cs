@@ -18,7 +18,7 @@ namespace ArbeitsstundenXML.ViewModels
             try
             {
                 
-                XDocument doc = XDocument.Load("C:\\Pfad\\Zu\\Deiner\\Datei\\data.xml");
+                XDocument doc = XDocument.Load("C:\\Users\\arian\\git\\apr3\\Dienststunden\\ArbeitsstundenXML\\Resources\\files\\data.xml");
 
                 // Linq um die Stunden summiert auszugeben
                 int gesamteStunden = doc.Root.Elements("user")
