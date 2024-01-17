@@ -10,7 +10,7 @@ namespace ArbeitsstundenXML.ViewModels
     public partial class Hinzufuegen : MainViewModel
     {
 
-        public Hinzufuegen() { }
+        
 
 
         [RelayCommand]

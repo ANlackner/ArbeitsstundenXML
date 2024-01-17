@@ -19,8 +19,8 @@ namespace ArbeitsstundenXML.ViewModels
         {
             try
             {
-                XmlDocument data = new XmlDocument();
-                data.Load("C:\\Users\\arian\\git\\apr3\\Dienststunden\\ArbeitsstundenXML\\Resources\\files\\data.xml");
+
+                XDocument data = XDocument.Load("C:\\Users\\arian\\git\\apr3\\Dienststunden\\ArbeitsstundenXML\\Resources\\files\\data.xml");
 
                 // hat visual studio so geändert
                 foreach (var (username, password) in from XmlElement userElement in data.DocumentElement.SelectNodes("user")

@@ -20,10 +20,10 @@ namespace ArbeitsstundenXML.ViewModels
             try
             {
                
-                XDocument doc = XDocument.Load("C:\\Users\\arian\\git\\apr3\\Dienststunden\\ArbeitsstundenXML\\Resources\\files\\data.xml");
+                XDocument data = XDocument.Load("C:\\Users\\arian\\git\\apr3\\Dienststunden\\ArbeitsstundenXML\\Resources\\files\\data.xml");
 
                 // Überprüfung ob es den Benutzer bereits gibt
-                bool userExists = doc.Root.Elements("user")
+                bool userExists = data.Root.Elements("user")
                     .Any(u => u.Element("username")?.Value == InputEntry);
 
                 if (userExists)
@@ -40,10 +40,10 @@ namespace ArbeitsstundenXML.ViewModels
                     );
 
                     // Hinzufügung
-                    doc.Root.Add(newUser);
+                    data.Root.Add(newUser);
 
                     // Speichern der Änderungen
-                    doc.Save("C:\\Users\\arian\\git\\apr3\\Dienststunden\\ArbeitsstundenXML\\Resources\\files\\data.xml");
+                    data.Save("C:\\Users\\arian\\git\\apr3\\Dienststunden\\ArbeitsstundenXML\\Resources\\files\\data.xml");
 
                     OutputText = $"Benutzer '{InputEntry}' erfolgreich registriert.";
                 }

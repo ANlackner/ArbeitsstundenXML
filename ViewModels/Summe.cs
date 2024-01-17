@@ -18,10 +18,10 @@ namespace ArbeitsstundenXML.ViewModels
             try
             {
                 
-                XDocument doc = XDocument.Load("C:\\Users\\arian\\git\\apr3\\Dienststunden\\ArbeitsstundenXML\\Resources\\files\\data.xml");
+                XDocument data = XDocument.Load("C:\\Users\\arian\\git\\apr3\\Dienststunden\\ArbeitsstundenXML\\Resources\\files\\data.xml");
 
                 // Linq um die Stunden summiert auszugeben
-                int gesamteStunden = doc.Root.Elements("user")
+                int gesamteStunden = data.Root.Elements("user")
                     .Where(u => (string)u.Element("username") == UserEntry)
                     .Elements("hours")
                     .Sum(h => Convert.ToInt32(h.Value));
